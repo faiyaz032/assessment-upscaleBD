@@ -1,0 +1,34 @@
+[
+  {
+    "event_id": "ev001",
+    "timestamp": "2024-11-01T10:00:00Z",
+    "user": {
+      "id": 1,
+      "name": "Alice"
+    },
+    "course": {
+      "id": "course_py101",
+      "title": "Python Basics"
+    },
+    "action": "completed_lesson",
+    "metadata": {
+      "lesson_id": "lesson_001",
+      "lesson_title": "Variables & Types",
+      "duration_minutes": 12
+    }
+  },
+  {
+    "event_id": "ev002",
+    "timestamp": "2024-11-01T10:30:00Z",
+    "user": {
+      "id": 2,
+      "name": "Bob"
+    },
+    "course": {
+      "id": "course_js101",
+      "title": "Intro to JavaScript"
+    },
+    "action": "started_course",
+    "metadata": {}
+  }
+]

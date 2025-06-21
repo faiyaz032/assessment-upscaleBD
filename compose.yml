@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  etl:
+    build:
+      context: ./etl
+    depends_on:
+      - postgres
+    volumes:
+      - ./etl/activity_logs.json:/app/activity_logs.json
+    environment:
+      DB_HOST: postgres
+      DB_NAME: upscaleBD_assessment
+      DB_USER: etl_user
+      DB_PASSWORD: etl_password
+
+  postgres:
+    image: postgres:17.4
+    environment:
+      POSTGRES_DB: upscaleBD_assessment
+      POSTGRES_USER: etl_user
+      POSTGRES_PASSWORD: etl_password
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
