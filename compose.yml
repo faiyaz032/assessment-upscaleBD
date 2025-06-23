@@ -18,15 +18,12 @@ services:
     build:
       context: ./nest-api
       dockerfile: Dockerfile
-    command: sh -c "while ! test -f /app/etl.done; do echo 'Waiting for ETL...'; sleep 2; done && yarn start:dev"
     depends_on:
       - postgres
-
     ports:
       - '3000:3000'
     volumes:
-      - ./api:/app
-      - /app/node_modules
+      - ./nest-api:/app
     environment:
       DB_HOST: postgres
       DB_NAME: upscaleBD_assessment
