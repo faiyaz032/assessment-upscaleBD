@@ -18,11 +18,12 @@ services:
     build:
       context: ./nest-api
       dockerfile: Dockerfile
-    command: yarn start:dev
+    command: sh -c "while ! test -f /app/etl.done; do echo 'Waiting for ETL...'; sleep 2; done && yarn start:dev"
     depends_on:
       - postgres
+      - etl
     ports:
-      - '3000:3000' # Change if needed
+      - '3000:3000'
     volumes:
       - ./api:/app
       - /app/node_modules
