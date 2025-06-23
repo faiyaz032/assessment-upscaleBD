@@ -21,7 +21,7 @@ services:
     command: sh -c "while ! test -f /app/etl.done; do echo 'Waiting for ETL...'; sleep 2; done && yarn start:dev"
     depends_on:
       - postgres
-      - etl
+
     ports:
       - '3000:3000'
     volumes:
