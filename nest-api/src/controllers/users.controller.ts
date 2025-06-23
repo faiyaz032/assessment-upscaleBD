@@ -1,10 +1,11 @@
-// src/controllers/users.controller.ts
 import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger'; // ✅ Swagger tag for grouping
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { Event } from '../entities/event.entity';
 import { User } from '../entities/user.entity';
 
+@ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(
@@ -36,9 +37,7 @@ export class UsersController {
       ])
       .getRawMany();
 
-    // Group by course
     const grouped: Record<string, any> = {};
-
     for (const row of rows) {
       const courseId = row['course_id'];
       if (!grouped[courseId]) {

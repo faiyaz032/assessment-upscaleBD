@@ -1,8 +1,10 @@
 // src/controllers/lessons.controller.ts
 import { Controller, Get } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { DataSource } from 'typeorm';
 import { Event } from '../entities/event.entity';
 
+@ApiTags('Lessons')
 @Controller('lessons')
 export class LessonsController {
   constructor(private dataSource: DataSource) {}

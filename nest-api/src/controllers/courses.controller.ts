@@ -1,10 +1,12 @@
 // src/controllers/courses.controller.ts
 import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { Course } from '../entities/course.entity';
 import { Event } from '../entities/event.entity';
 
+@ApiTags('Courses')
 @Controller('courses')
 export class CoursesController {
   constructor(
