@@ -22,8 +22,6 @@ services:
       - postgres
     ports:
       - '3000:3000'
-    volumes:
-      - ./nest-api:/app
     environment:
       DB_HOST: postgres
       DB_NAME: upscaleBD_assessment
