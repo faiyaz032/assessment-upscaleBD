@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CoursesController } from 'src/controllers/courses.controller';
+import { LessonsController } from 'src/controllers/lessons.controller';
+import { UsersController } from 'src/controllers/users.controller';
 import { Course } from 'src/entities/course.entity';
 import { Event } from 'src/entities/event.entity';
 import { Lesson } from 'src/entities/lesson.entity';
@@ -27,8 +30,14 @@ import { AppController } from './app.controller';
         synchronize: false,
       }),
     }),
+    TypeOrmModule.forFeature([User, Event, Lesson, Course]),
   ],
-  controllers: [AppController],
+  controllers: [
+    AppController,
+    UsersController,
+    LessonsController,
+    CoursesController,
+  ],
   providers: [],
 })
 export class AppModule {}
