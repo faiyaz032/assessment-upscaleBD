@@ -14,6 +14,24 @@ services:
       DB_USER: etl_user
       DB_PASSWORD: etl_password
 
+  api:
+    build:
+      context: ./nest-api
+      dockerfile: Dockerfile
+    command: yarn start:dev
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000' # Change if needed
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    environment:
+      DB_HOST: postgres
+      DB_NAME: upscaleBD_assessment
+      DB_USER: etl_user
+      DB_PASSWORD: etl_password
+
   postgres:
     image: postgres:17.4
     environment:
